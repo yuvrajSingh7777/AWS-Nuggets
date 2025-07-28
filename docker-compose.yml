@@ -1,0 +1,35 @@
+version: '3.9'
+
+services:
+  backend:
+    build: ./Backend
+    ports:
+      - '5000:5000'
+    environment:
+      - PORT=5000
+      - JWT_SECRET=ye_mera_secret_hai
+      - SESSION_SECRET=my_session_secret
+      - CLIENT_ORIGIN=http://localhost:3000
+      - AWS_ACCESS_KEY_ID=AKIA2QAYDVATVCSTHSUK
+      - AWS_SECRET_ACCESS_KEY=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
+      - S3_BUCKET_NAME=awsbuckyt
+      - EMAIL_USER=iamyuvrajsingh118@gmail.com
+      - EMAIL_PASS=duel dlez ozlr hcis
+      - EMAIL_RECEIVER=iamyuvrajsingh118@gmail.com
+      - GOOGLE_CLIENT_ID=417095378156-upgk2ll2ul8ticl52kun96kbvnmjstgo.apps.googleusercontent.com
+      - GOOGLE_CLIENT_SECRET=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
+    volumes:
+      - ./Backend:/app
+    restart: always
+    depends_on:
+      - frontend
+
+  frontend:
+    build: ./Frontend/aws-nuggets
+    ports:
+      - '3001:80'
+    environment:
+      - PORT=3000
+    volumes:
+      - ./Frontend/aws-nuggets:/app
+    restart: always

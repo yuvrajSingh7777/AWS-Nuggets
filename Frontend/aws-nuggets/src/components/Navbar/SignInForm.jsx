@@ -45,13 +45,8 @@ const SignInForm = ({ onClose }) => {
       if (res.status === 200) {
         const { token, user } = res.data;
 
-        if (rememberMe) {
-          localStorage.setItem('token', token);
+        localStorage.setItem('token', token);
           localStorage.setItem('user', JSON.stringify(user));
-        } else {
-          sessionStorage.setItem('token', token);
-          sessionStorage.setItem('user', JSON.stringify(user));
-        }
 
         setMessage('✅ Login successful!');
         navigate('/');
