@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
   backend:
-    build: ./Backend
+    build: ./backend
     ports:
       - '5000:5000'
     environment:
@@ -19,17 +19,17 @@ services:
       - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
       - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
     volumes:
-      - ./Backend:/app
+      - ./backend:/app
     restart: always
     depends_on:
       - frontend
 
   frontend:
-    build: ./Frontend/aws-nuggets
+    build: ./frontend
     ports:
       - '3001:80'
     environment:
       - PORT=3000
     volumes:
-      - ./Frontend/aws-nuggets:/app
+      - ./frontend:/app
     restart: always
