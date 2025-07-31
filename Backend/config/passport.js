@@ -21,7 +21,7 @@ passport.use(
       try {
         const email = profile.emails[0].value;
 
-        // Check if user already exists
+        
         const getParams = {
           TableName: TABLE_NAME,
           Key: { email },
@@ -31,7 +31,7 @@ passport.use(
         let user = getResult.Item;
 
         if (!user) {
-          // Create new user
+          
           user = {
             email,
             name: profile.displayName,
