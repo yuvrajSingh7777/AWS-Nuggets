@@ -5,6 +5,7 @@ const {
   login,
   googleAuthCallback,
   forgotPassword,
+  resetPassword
   
 } = require('../controllers/authController');
 
@@ -14,6 +15,7 @@ const router = express.Router();
 router.post('/signup', signup);
 router.post('/login', login);
 router.post('/forgot-password', forgotPassword);
+router.post('/reset-password', resetPassword);
 
 
 router.get('/google', passport.authenticate('google', {
