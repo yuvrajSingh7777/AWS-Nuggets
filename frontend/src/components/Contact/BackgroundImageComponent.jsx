@@ -11,36 +11,36 @@ export default function BackgroundWithIcons() {
     >
         <div className="absolute inset-0 dark:bg-black dark:opacity-20"></div>
 
-      {/* Phone icon */}
+      
       <div
         className="absolute cursor-pointer"
         style={{
-          top: "25%", // adjust as needed
-          left: "20%", // adjust as needed
+          top: "25%", 
+          left: "20%", 
         }}
         title="Phone"
       >
         <FiPhone className="p-2 w-15 h-15 text-blue-500 bg-black rounded-full drop-shadow-lg " />
       </div>
 
-      {/* Message icon */}
+      
       <div
         className="absolute cursor-pointer"
         style={{
-          top: "50%", // adjust as needed
-          left: "40%", // adjust as needed
+          top: "50%",
+          left: "40%", 
         }}
         title="Message"
       >
         <FiMessageCircle className="p-2 w-15 h-15 text-blue-500 bg-black rounded-full drop-shadow-lg" />
       </div>
 
-      {/* Email icon */}
+      
       <div
         className="absolute cursor-pointer"
         style={{
-          top: "35%", // adjust as needed
-          left: "65%", // adjust as needed
+          top: "35%", 
+          left: "65%", 
         }}
         title="Email"
       >
