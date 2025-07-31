@@ -46,7 +46,7 @@ passport.use(
           const putParams = {
             TableName: TABLE_NAME,
             Item: user,
-            ConditionExpression: 'attribute_not_exists(email)', // Prevent overwrite
+            ConditionExpression: 'attribute_not_exists(email)',
           };
 
           await ddbDocClient.send(new PutCommand(putParams));
