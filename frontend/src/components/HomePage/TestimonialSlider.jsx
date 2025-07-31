@@ -41,7 +41,7 @@ const TESTIMONIALS = [
   },
 ];
 
-// How many cards visible simultaneously
+
 const SLIDES_TO_SHOW = 3;
 
 export default function TestimonialSlider() {
@@ -50,10 +50,10 @@ export default function TestimonialSlider() {
   const slideWidthRef = useRef(0);
   const animationRef = useRef();
 
-  // Total cards to render = testimonial count * 2 (to create loop effect)
+  
   const slides = [...TESTIMONIALS, ...TESTIMONIALS];
 
-  // Initialize slide width on mount
+  
   useEffect(() => {
     if (containerRef.current) {
       const slide = containerRef.current.querySelector(".slide");
@@ -61,14 +61,14 @@ export default function TestimonialSlider() {
     }
   }, []);
 
-  // Animation loop for continuous sliding
+  
   useEffect(() => {
-    const speed = 0.5; // pixels per frame approx
+    const speed = 0.5; 
 
     const animate = () => {
       setOffset((prev) => {
         let newOffset = prev + speed;
-        // Reset offset when we've scrolled past one full slide set
+        
         if (newOffset >= slideWidthRef.current * TESTIMONIALS.length) {
           newOffset = 0;
         }
@@ -82,7 +82,7 @@ export default function TestimonialSlider() {
     return () => cancelAnimationFrame(animationRef.current);
   }, []);
 
-  // Manual controls to jump forward/back by one card
+  
   const slideNext = () => {
     setOffset((prev) => {
       const newVal = prev + slideWidthRef.current;

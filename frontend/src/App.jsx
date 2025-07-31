@@ -89,7 +89,7 @@ useEffect(() => {
           <Route path="/signin" element={<SignInForm />} />
           <Route path="/auth-success" element={<AuthSuccess />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/reset-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
 
 
 
