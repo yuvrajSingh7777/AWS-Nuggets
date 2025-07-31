@@ -13,7 +13,7 @@ const ddbDocClient = DynamoDBDocumentClient.from(ddbClient);
 
 const TABLE_NAME = 'Users';
 
-// Helpers:
+
 async function findUserByEmail(email) {
   const params = {
     TableName: TABLE_NAME,
@@ -27,7 +27,7 @@ async function createUser(user) {
   const params = {
     TableName: TABLE_NAME,
     Item: user,
-    ConditionExpression: 'attribute_not_exists(email)' // Ensure no duplicate
+    ConditionExpression: 'attribute_not_exists(email)' 
   };
   await ddbDocClient.send(new PutCommand(params));
   return user;
@@ -122,7 +122,7 @@ exports.login = async (req, res) => {
 
 exports.googleAuthCallback = async (req, res) => {
   try {
-    const user = req.user; // set by passport google strategy
+    const user = req.user; 
 
     const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
