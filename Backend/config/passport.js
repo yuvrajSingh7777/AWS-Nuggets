@@ -64,13 +64,12 @@ passport.use(
   )
 );
 
-// Serialize user (save email in session)
+
 passport.serializeUser((user, done) => {
   console.log('🧠 Serializing user:', user.email);
   done(null, user.email);
 });
 
-// Deserialize user (fetch user from DB using email in session)
 passport.deserializeUser(async (email, done) => {
   try {
     console.log('🔍 Deserializing user with email:', email);
@@ -84,7 +83,7 @@ passport.deserializeUser(async (email, done) => {
 
     if (!result.Item) {
       console.warn('❌ User not found in DB:', email);
-      return done(null, false); // 🔁 force logout silently
+      return done(null, false); 
     }
 
     done(null, result.Item);
