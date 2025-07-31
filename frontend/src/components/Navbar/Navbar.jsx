@@ -15,23 +15,23 @@ const Navbar = ({ darkMode, setDarkMode }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const services = [
-    { name: "Ec2", icon: <Server size={18} />, color: "bg-orange-500" },
+    { name: "Ec2", icon: <Server size={18} />, color: "bg-red-500" },
     { name: "Sns", icon: <Bell size={18} />, color: "bg-pink-500" },
     { name: "S3", icon: <Database size={18} />, color: "bg-amber-700" },
-    { name: "Ebs", icon: <Camera size={18} />, color: "bg-red-500" },
+    { name: "Ebs", icon: <Camera size={18} />, color: "bg-blue-500" },
     { name: "Vpc", icon: <Link size={18} />, color: "bg-purple-500" },
-    { name: "Ssh", icon: <Terminal size={18} />, color: "bg-yellow-500" },
+    { name: "Ssh", icon: <Terminal size={18} />, color: "bg-gray-600" },
     {
       name: "Iam", icon: (
-        <div className="relative w-8 h-8 bg-green-600 rounded-sm">
+        <div className="relative w-8 h-8 bg-blue-600 rounded-sm">
           <span className="absolute text-white w-5 h-4 top-1 left-1">IAM</span>
         </div>
       )
     },
     { name: "Autoscaling", icon: <Scaling size={18} />, color: "bg-orange-500" },
-    { name: "Dynamodb", icon: <Database size={18} />, color: "bg-blue-500" },
+    { name: "Dynamodb (coming soon)", icon: <Database size={18} />, color: "bg-green-600" },
     {
-      name: "Cloudwatch", icon: (
+      name: "Cloudwatch (coming soon)", icon: (
         <div className="relative w-8 h-8">
           <Cloud className="absolute text-white w-7 h-6 top-1 left-1" />
           <Search className="absolute text-[red] w-5 h-3 top-4 left-3" />

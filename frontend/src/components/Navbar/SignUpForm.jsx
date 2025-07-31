@@ -41,7 +41,7 @@ const SignUpForm = ({ onClose }) => {
 
     try {
       setLoading(true);
-      const res = await axios.post('http://localhost:5000/api/auth/signup', {
+      const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/signup`, {
         name: formData.name,
         email: formData.email,
         password: formData.password,
@@ -69,7 +69,7 @@ const SignUpForm = ({ onClose }) => {
   };
 
  const handleGoogleSignUp = () => {
-  window.location.href = 'http://localhost:5000/api/auth/google';
+  window.location.href = `${import.meta.env.VITE_BACKEND_URL}/api/auth/google`;
 };
 
 

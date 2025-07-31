@@ -105,7 +105,7 @@ router.patch('/profile-pic', protect, upload.single('profilePic'), async (req, r
     };
     const updatedUserData = await ddbDocClient.send(new UpdateCommand(updateParams));
 
-    // Remove sensitive data before sending response
+    
     const user = updatedUserData.Attributes;
     delete user.password;
     delete user.resetPasswordToken;

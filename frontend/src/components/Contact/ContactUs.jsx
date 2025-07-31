@@ -49,7 +49,7 @@ export default function ContactUs() {
 
     try {
       
-      await axios.post('http://localhost:5000/api/contact', form);
+      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/contact`, form);
 
       setSuccess(true);
       setForm({ name: "", email: "", subject: "", message: "" });

@@ -1,7 +1,47 @@
+import { useRef, useState } from "react";
+
 const SNSSection = () => {
+   const videoRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const handleVideoClick = () => {
+    const video = videoRef.current;
+    if (video) {
+      video.play();
+      video.setAttribute("controls", "true");
+      setIsPlaying(true);
+    }
+  };
   return (
     <div className="max-w-5xl mx-auto dark:bg-gray-800 p-6 bg-white rounded-lg shadow-lg mt-12 md:mt-15">
       <h1 className="text-3xl sm:text-4xl dark:text-gray-50 flex gap-2 font-bold text-black"><span>&#10137;</span> AWS SNS Setup & Usage</h1>
+
+      <div className="mt-8 mb-8">
+        <div className="rounded-xl overflow-hidden shadow w-full max-w-180 bg-blue-50 mx-auto">
+          <div className="w-full aspect-video bg-black h-50 md:h-100 relative">
+            <video
+              ref={videoRef}
+              src="https://awsbuckyt.s3.eu-north-1.amazonaws.com/assets/SSYouTube.online_AWS+Simple+Notification+Service+-+Send+First+Notification+-+(Hindi)_720p.mp4"
+              className="w-full h-full"
+              preload="none"
+              onClick={handleVideoClick}
+            />
+            {!isPlaying && (
+              <div
+                onClick={handleVideoClick}
+                className="absolute inset-0 flex items-center justify-center bg-none cursor-pointer"
+              >
+                   <img
+                src="https://awsbuckyt.s3.eu-north-1.amazonaws.com/assets/lecture7.png"
+                alt="Thumbnail"
+                className="absolute w-full h-full object-fill"
+              />
+                <button className="cursor-pointer bg-gray-50 md:bg-transparent px-4 py-3.5 md:px-0 md:py-0 rounded-full text-black z-2 text-3xl md:text-6xl">▶</button>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
 
       <div className="p-4 pl-5 sm:pl-0 border-b mt-6 sm:mt-0 border-blue-100 mb-6">
         <h2 className="text-2xl flex gap-1 sm:text-3xl font-semibold text-blue-500"><span>1.</span> SNS Topic Creation & Notifications (Video + Steps)</h2>

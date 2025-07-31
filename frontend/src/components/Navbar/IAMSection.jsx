@@ -24,7 +24,7 @@ const IAMSection = () => {
           <div className="w-full aspect-video bg-black h-50 md:h-100 relative">
             <video
               ref={videoRef}
-              src="src/assets/WVZROEJSeTN4R2dfNzIwcA_out.mp4 " 
+              src="https://awsbuckyt.s3.eu-north-1.amazonaws.com/assets/WVZROEJSeTN4R2dfNzIwcA_out.mp4" 
               className="w-full h-full"
               preload="none"
               onClick={handleVideoClick}

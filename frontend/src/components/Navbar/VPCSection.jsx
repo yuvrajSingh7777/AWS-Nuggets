@@ -37,7 +37,7 @@ const VPCSection = () => {
           <div className="w-full aspect-video bg-black h-50 md:h-100 relative">
             <video
               ref={videoRef1} // Changed to videoRef1
-              src="src/assets/SSYouTube.online_AWS VPC & VPC Peering  Lec-5 (Part-1)Project for DevOps & Cloud Engineers (hindi)_720p.mp4"
+              src="https://awsbuckyt.s3.eu-north-1.amazonaws.com/assets/SSYouTube.online_AWS+VPC+%26+VPC+Peering++Lec-5+(Part-1)Project+for+DevOps+%26+Cloud+Engineers+(hindi)_720p.mp4"
               className="w-full h-full"
               preload="none"
               onClick={handleVideoClick1} // Changed to handleVideoClick1
@@ -65,7 +65,7 @@ const VPCSection = () => {
           <div className="w-full aspect-video bg-black h-50 md:h-100 relative">
             <video
               ref={videoRef2} // Changed to videoRef2
-              src="src/assets/SSYouTube.online_AWS_ VPC NAT Gateway Setup in Your VPC - A Step-by-Step Tutorial lec-5 (Part-2)_720p.mp4"
+              src="https://awsbuckyt.s3.eu-north-1.amazonaws.com/assets/SSYouTube.online_AWS_+VPC+NAT+Gateway+Setup+in+Your+VPC+-+A+Step-by-Step+Tutorial+lec-5+(Part-2)_720p.mp4"
               className="w-full h-full"
               preload="none"
               onClick={handleVideoClick2} // Changed to handleVideoClick2

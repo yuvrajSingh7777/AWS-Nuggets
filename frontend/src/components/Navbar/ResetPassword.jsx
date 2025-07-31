@@ -24,7 +24,7 @@ const ResetPassword = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/reset-password', { email });
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/reset-password`, { email });
 
       setSuccess(response.data.message || 'Password reset link sent successfully.');
       setEmail('');

@@ -40,7 +40,7 @@ const AutoScalingSection = () => {
           <div className="relative w-full aspect-video bg-black h-50 md:h-100">
             <video
               ref={videoRef1}
-              src="src/assets/SSYouTube.online_AWS ELB & Auto Scaling Groups Explained_ Practical Examples for Beginners! [HINDI]  Lec-6(Part-1)_720p.mp4" // Replace with your first video path
+              src="https://awsbuckyt.s3.eu-north-1.amazonaws.com/assets/SSYouTube.online_AWS+ELB+%26+Auto+Scaling+Groups+Explained_+Practical+Examples+for+Beginners!+%5BHINDI%5D++Lec-6(Part-1)_720p.mp4" 
               className="w-full h-full"
               preload="none"
               onClick={handleVideoClick1}
@@ -70,7 +70,7 @@ const AutoScalingSection = () => {
           <div className="relative w-full aspect-video bg-black h-50 md:h-100">
             <video
               ref={videoRef2}
-              src="src/assets/SSYouTube.online_AWS EC2 Auto Scaling _ Step By Step Tutorial Explained_ Practical Examples for Beginners (part-2)_720p.mp4" // Replace with your second video path
+              src="https://awsbuckyt.s3.eu-north-1.amazonaws.com/assets/SSYouTube.online_AWS+EC2+Auto+Scaling+_+Step+By+Step+Tutorial+Explained_+Practical+Examples+for+Beginners+(part-2)_720p.mp4"
               className="w-full h-full"
               preload="none"
               onClick={handleVideoClick2}

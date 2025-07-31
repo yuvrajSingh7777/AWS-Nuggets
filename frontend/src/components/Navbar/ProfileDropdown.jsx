@@ -10,7 +10,7 @@ const ProfileDropdown = ({ user, onLogout }) => {
   const dropdownRef = useRef(null);
   const fileInputRef = useRef(null);
 
-  const backendBase = "http://localhost:5000";
+  
 
   const getInitials = () => {
     if (!user?.name) return "U";
@@ -19,7 +19,7 @@ const ProfileDropdown = ({ user, onLogout }) => {
   };
 
   const profileImage = user?.profilePic?.startsWith("/")
-    ? `${backendBase}${user.profilePic}`
+    ? `${import.meta.env.VITE_BACKEND_URL}${user.profilePic}`
     : user?.profilePic || null;
 
   const handleImageUpload = async (e) => {
@@ -32,7 +32,7 @@ const ProfileDropdown = ({ user, onLogout }) => {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await axios.patch(`${backendBase}/api/user/profile-pic`, formData, {
+      const res = await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/api/user/profile-pic`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,
@@ -53,7 +53,7 @@ const ProfileDropdown = ({ user, onLogout }) => {
       const token = localStorage.getItem("token");
 
       const res = await axios.patch(
-        `${backendBase}/api/user/update-name`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/user/update-name`,
         { name: newName },
         {
           headers: {
@@ -80,7 +80,7 @@ const ProfileDropdown = ({ user, onLogout }) => {
     try {
       const token = localStorage.getItem("token");
 
-      await axios.delete(`${backendBase}/api/user/delete`, {
+      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/user/delete`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

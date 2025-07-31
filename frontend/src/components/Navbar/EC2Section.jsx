@@ -23,7 +23,7 @@ const EC2Section = () => {
           <div className="w-full aspect-video bg-black h-50 md:h-100 relative">
             <video
               ref={videoRef}
-              src="src/assets/SSYouTube.online_AWS EC2 Instance Lec-1_ A Complete Beginner’s Guide [HINDI]_720p.mp4"
+              src="https://awsbuckyt.s3.eu-north-1.amazonaws.com/assets/SSYouTube.online_AWS+EC2+Instance+Lec-1_+A+Complete+Beginner%E2%80%99s+Guide+%5BHINDI%5D_720p.mp4"
               className="w-full h-full"
               preload="none"
               onClick={handleVideoClick}

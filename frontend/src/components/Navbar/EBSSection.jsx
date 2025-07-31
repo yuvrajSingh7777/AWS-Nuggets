@@ -21,7 +21,7 @@ const EBSSection = () => {
           <div className="w-full aspect-video bg-black h-50 md:h-100 relative">
             <video
               ref={videoRef}
-              src="src/assets/SSYouTube.online_AWS EBS Storage Lec -2_ Learn Resizing and Backup with Real Examples_720p.mp4"
+              src="https://awsbuckyt.s3.eu-north-1.amazonaws.com/assets/SSYouTube.online_AWS+EBS+Storage+Lec+-2_+Learn+Resizing+and+Backup+with+Real+Examples_720p.mp4"
               className="w-full h-full"
               preload="none"
               onClick={handleVideoClick}

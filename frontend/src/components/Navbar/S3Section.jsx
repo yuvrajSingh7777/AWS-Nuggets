@@ -22,7 +22,7 @@ const S3Section = () => {
           <div className="w-full aspect-video bg-black h-50 md:h-100 relative">
             <video
               ref={videoRef}
-              src="src/assets/SSYouTube.online_AWS S3 Lec-3 _ Hands-on tutorial for Beginners _ Hindi video on AWS S3_720p.mp4"
+              src="https://awsbuckyt.s3.eu-north-1.amazonaws.com/assets/SSYouTube.online_AWS+S3+Lec-3+_+Hands-on+tutorial+for+Beginners+_+Hindi+video+on+AWS+S3_720p.mp4"
               className="w-full h-full"
               preload="none"
               onClick={handleVideoClick}
