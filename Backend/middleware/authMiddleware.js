@@ -26,7 +26,7 @@ const protect = async (req, res, next) => {
     if (!result.Item) return res.status(401).json({ message: 'Unauthorized: User not found' });
 
     req.user = result.Item;
-    delete req.user.password; // Remove sensitive info
+    delete req.user.password; 
     next();
   } catch (err) {
     res.status(401).json({ message: 'Invalid token' });
