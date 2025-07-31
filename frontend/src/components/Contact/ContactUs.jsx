@@ -4,7 +4,7 @@ import {
   HiOutlineMail,
   HiOutlineLocationMarker,
 } from "react-icons/hi";
-import axios from "axios"; // ✅ Added for backend API call
+import axios from "axios"; 
 
 export default function ContactUs() {
   const [form, setForm] = useState({
@@ -48,7 +48,7 @@ export default function ContactUs() {
     }
 
     try {
-      // ✅ Backend POST request
+      
       await axios.post('http://localhost:5000/api/contact', form);
 
       setSuccess(true);
@@ -73,10 +73,10 @@ export default function ContactUs() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-16 bg-white dark:bg-gray-400 rounded-2xl shadow-xl p-12">
-        {/* Contact Info */}
+        
         <ContactInfo />
 
-        {/* Contact Form */}
+        
         <form onSubmit={handleSubmit} noValidate className="space-y-6">
           <InputGroup
             label="Full Name"
@@ -139,7 +139,7 @@ export default function ContactUs() {
   );
 }
 
-// Contact Info section with icons & clean style
+
 const ContactInfo = () => {
   return (
     <div className="space-y-12 flex flex-col justify-center">
