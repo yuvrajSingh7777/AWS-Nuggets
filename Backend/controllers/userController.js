@@ -12,7 +12,7 @@ const TABLE_NAME = 'Users';
 
 exports.getProfile = async (req, res) => {
   try {
-    // req.user contains 'email' from token
+    
     const params = {
       TableName: TABLE_NAME,
       Key: { email: req.user.email }
@@ -29,25 +29,25 @@ exports.getProfile = async (req, res) => {
   }
 };
 
-// In your delete account controller
+
 exports.deleteAccount = async (req, res) => {
   try {
     const email = req.user.email;
 
-    // Delete from DynamoDB
+    
     await ddbDocClient.send(new DeleteCommand({
       TableName: TABLE_NAME,
       Key: { email },
     }));
 
-    // ✅ Destroy session
+    
     req.logout(function(err) {
       if (err) return next(err);
 
       req.session.destroy((err) => {
         if (err) return res.status(500).json({ success: false, message: "Error destroying session" });
 
-        res.clearCookie('connect.sid'); // Remove session cookie
+        res.clearCookie('connect.sid'); 
         return res.json({ success: true, message: "Account deleted and logged out" });
       });
     });
