@@ -7,7 +7,7 @@ const { DynamoDBDocumentClient, GetCommand, PutCommand, UpdateCommand } = requir
 
 require('dotenv').config();
 
-const REGION = process.env.AWS_REGION || 'us-east-1';
+const REGION = process.env.AWS_REGION ;
 const ddbClient = new DynamoDBClient({ region: REGION });
 const ddbDocClient = DynamoDBDocumentClient.from(ddbClient);
 
@@ -169,7 +169,7 @@ exports.forgotPassword = async (req, res) => {
       html: `
         <h2>Forgot your password?</h2>
         <p>Click the button below to reset your password.</p>
-        <a href="${resetUrl}" style="display:inline-block;margin-top:10px;padding:10px 20px;background:#007BFF;color:white;text-decoration:none;border-radius:5px;">Reset Password</a>
+        <a target="_self" href="${resetUrl}" style="display:inline-block;margin-top:10px;padding:10px 20px;background:#007BFF;color:white;text-decoration:none;border-radius:5px;">Reset Password</a>
         <p>If you did not request this, please ignore this email.</p>
       `
     };
@@ -182,3 +182,47 @@ exports.forgotPassword = async (req, res) => {
     res.status(500).json({ message: 'Could not send reset link', error: err.message });
   }
 };
+
+
+exports.resetPassword = async (req, res) => {
+  const { token } = req.params;
+  const { password } = req.body;
+
+  try {
+    const params = {
+      TableName: TABLE_NAME,
+    
+    };
+
+    const { ScanCommand } = require('@aws-sdk/lib-dynamodb');
+    const scanRes = await ddbDocClient.send(new ScanCommand({
+      TableName: TABLE_NAME,
+      FilterExpression: "resetPasswordToken = :token AND resetPasswordExpires >= :now",
+      ExpressionAttributeValues: {
+        ":token": token,
+        ":now": Date.now()
+      }
+    }));
+
+    if (!scanRes.Items || scanRes.Items.length === 0) {
+      return res.status(400).json({ message: "Invalid or expired token" });
+    }
+
+    const user = scanRes.Items[0];
+
+    const hash = await bcrypt.hash(password, 10);
+
+    await updateUser(user.email, {
+      password: hash,
+      resetPasswordToken: null,
+      resetPasswordExpires: null,
+      updatedAt: new Date().toISOString()
+    });
+
+    res.status(200).json({ message: "Password reset successful!" });
+  } catch (err) {
+    console.error("Reset password error:", err);
+    res.status(500).json({ message: "Could not reset password", error: err.message });
+  }
+};
+

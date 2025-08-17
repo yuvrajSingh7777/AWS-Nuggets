@@ -13,14 +13,27 @@ const ProfileDropdown = ({ user, onLogout }) => {
   
 
   const getInitials = () => {
-    if (!user?.name) return "U";
-    const parts = user.name.trim().split(" ");
-    return (parts[0]?.[0] || "") + (parts[1]?.[0] || "");
-  };
+  if (!user?.name) return "U";
+  const parts = user.name.trim().split(" ");
+  
+  if (parts.length > 1) {
+    return (parts[0][0] + parts[1][0]).toUpperCase();
+  }
+  
+  return parts[0].slice(0, 2).toUpperCase();  
+};
 
-  const profileImage = user?.profilePic?.startsWith("/")
-    ? `${import.meta.env.VITE_BACKEND_URL}${user.profilePic}`
-    : user?.profilePic || null;
+
+  const profileImage =
+  user?.profilePic &&
+  user.profilePic.trim() !== "" &&
+  user.profilePic !== "null"
+    ? user.profilePic.startsWith("/")
+      ? `${import.meta.env.VITE_BACKEND_URL}${user.profilePic}`
+      : user.profilePic
+    : null;
+
+
 
   const handleImageUpload = async (e) => {
     const file = e.target.files?.[0];
@@ -114,7 +127,14 @@ const ProfileDropdown = ({ user, onLogout }) => {
         className="cursor-pointer w-10 h-10 rounded-full overflow-hidden border-2 border-white shadow m-auto"
       >
         {profileImage ? (
-          <img src={profileImage} alt="Avatar" className="w-full h-full object-cover" />
+          <img src={profileImage} alt="Avatar" className="w-full h-full object-cover" onError={(e) => {
+  e.currentTarget.style.display = "none";
+  e.currentTarget.insertAdjacentHTML(
+    "afterend",
+    `<div class="w-9 h-9 bg-orange-300 rounded-full flex items-center justify-center text-white font-bold text-xl">${getInitials()}</div>`
+  );
+}}
+/>
         ) : (
           <div className="w-full h-full bg-orange-400 text-white flex items-center justify-center font-bold text-lg">
             {getInitials()}

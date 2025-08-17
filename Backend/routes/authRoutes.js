@@ -4,7 +4,8 @@ const {
   signup,
   login,
   googleAuthCallback,
-  forgotPassword
+  forgotPassword,
+  resetPassword
   
 } = require('../controllers/authController');
 
@@ -14,6 +15,7 @@ const router = express.Router();
 router.post('/signup', signup);
 router.post('/login', login);
 router.post('/forgot-password', forgotPassword);
+router.post("/reset-password/:token", resetPassword);
 
 
 router.get('/google', passport.authenticate('google', {
@@ -27,11 +29,6 @@ router.get(
 );
 
 
-router.post('/reset-password', async (req, res) => {
-  const { email } = req.body;
-  if (!email) return res.status(400).json({ message: 'Email is required' });
 
-  res.json({ message: 'If this email exists, a reset link has been sent' });
-});
 
 module.exports = router;
