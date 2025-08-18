@@ -12,7 +12,7 @@ const ForgotPassword = () => {
     setLoading(true);
 
     try {
-      const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/forgot-password`, { email });
+      const res = await axios.post(`/api/auth/forgot-password`, { email });
       setMessage(res.data.message || '✅ Reset link sent to your email');
     } catch (err) {
       console.error('Forgot password error:', err);

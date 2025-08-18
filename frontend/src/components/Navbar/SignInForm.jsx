@@ -33,7 +33,7 @@ const SignInForm = ({ onClose }) => {
     setLoading(true);
 
     try {
-      const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/login`, {
+      const res = await axios.post(`/api/auth/login`, {
         email: formData.email,
         password: formData.password
       }, {
@@ -65,7 +65,7 @@ const SignInForm = ({ onClose }) => {
   };
 
   const handleGoogleSignIn = () => {
-    window.location.href = `${import.meta.env.VITE_BACKEND_URL}/api/auth/google`;
+    window.location.href = `/api/auth/google`;
   };
 
 

@@ -15,11 +15,6 @@ const app = express();
 // Initialize passport strategy
 require('./config/passport');
 
-// Middleware
-app.use(cors({
-  origin: `${process.env.FRONTEND_URL}`,
-  credentials: true
-}));
 
 app.use(express.json());
 
@@ -30,7 +25,7 @@ app.use(session({
   saveUninitialized: false,
   cookie: {
     httpOnly: true,
-    secure: false, // true in production with HTTPS
+    secure: process.env.NODE_ENV === "production", // Render pe HTTPS ke liye true
     maxAge: 1000 * 60 * 60 * 24 // 1 day
   }
 }));
@@ -43,16 +38,18 @@ app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/contact', contactRoutes);
 
+
+app.use(express.static(path.join(__dirname, 'dist')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
+});
+
 // Error Handler Middleware
 app.use(errorHandler);
-
-// Default Route
-app.get('/', (req, res) => {
-  res.send('API is running...');
-});
 
 // Start Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () =>
-  console.log(`🚀 Server running on http://localhost:${PORT}`)
+  console.log(`🚀 Server running on port ${PORT}`)
 );

@@ -29,7 +29,7 @@ const ProfileDropdown = ({ user, onLogout }) => {
   user.profilePic.trim() !== "" &&
   user.profilePic !== "null"
     ? user.profilePic.startsWith("/")
-      ? `${import.meta.env.VITE_BACKEND_URL}${user.profilePic}`
+      ? `${user.profilePic}`
       : user.profilePic
     : null;
 
@@ -45,7 +45,7 @@ const ProfileDropdown = ({ user, onLogout }) => {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/api/user/profile-pic`, formData, {
+      const res = await axios.patch(`/api/user/profile-pic`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,
@@ -66,7 +66,7 @@ const ProfileDropdown = ({ user, onLogout }) => {
       const token = localStorage.getItem("token");
 
       const res = await axios.patch(
-        `${import.meta.env.VITE_BACKEND_URL}/api/user/update-name`,
+        `/api/user/update-name`,
         { name: newName },
         {
           headers: {
@@ -93,7 +93,7 @@ const ProfileDropdown = ({ user, onLogout }) => {
     try {
       const token = localStorage.getItem("token");
 
-      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/user/delete`, {
+      await axios.delete(`/api/user/delete`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
