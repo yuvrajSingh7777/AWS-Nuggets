@@ -31,13 +31,13 @@ function App() {
 
   
   const ProtectedRoute = ({ element }) => {
-    if (isAuthenticated) {
-      return element
-    } else {
-      navigate('/signup')
-      return null
-    }
+  if (isAuthenticated) {
+    return element
+  } else {
+    return <Navigate to="/signup" replace />
   }
+}
+
 
 useEffect(() => {
   const token = localStorage.getItem("token")
