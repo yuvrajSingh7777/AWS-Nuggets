@@ -189,7 +189,7 @@ const ProfileDropdown = ({ user, onLogout }) => {
                 />
                 <button
                   onClick={handleNameUpdate}
-                  className="bg-blue-500 text-white text-sm px-3 py-1 rounded hover:bg-blue-600"
+                  className="bg-blue-500 cursor-pointer text-white text-sm px-3 py-1 rounded hover:bg-blue-600"
                 >
                   Save
                 </button>
