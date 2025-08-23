@@ -124,16 +124,16 @@ const Navbar = ({ darkMode, setDarkMode }) => {
           </div>
 
           <div className="nav-desktop dark:bg-gray-300 hidden md:flex items-center gap-4 bg-white/60 px-4 py-1 rounded-full border border-blue-200 shadow-sm">
-            <a onClick={() => navigate('/')} className="nav-link flex items-center px-3 py-2 rounded-full font-semibold text-gray-800 hover:bg-blue-100 hover:text-blue-500 transition">
+            <a onClick={() => navigate('/')} className="nav-link cursor-pointer flex items-center px-3 py-2 rounded-full font-semibold text-gray-800 hover:bg-blue-100 hover:text-blue-500 transition">
               <Home size={18} className="mr-1 text-blue-500" /> Home
             </a>
-            <a onClick={() => navigate('/about')} className="nav-link flex items-center px-3 py-2 rounded-full font-semibold text-gray-800 hover:bg-blue-100 hover:text-blue-500 transition">
+            <a onClick={() => navigate('/about')} className="nav-link cursor-pointer flex items-center px-3 py-2 rounded-full font-semibold text-gray-800 hover:bg-blue-100 hover:text-blue-500 transition">
               <User size={18} className="mr-1 text-blue-500" /> About
             </a>
-            <a onClick={() => navigate('/pricing')} className="nav-link flex items-center px-3 py-2 rounded-full font-semibold text-gray-800 hover:bg-blue-100 hover:text-blue-500 transition">
+            <a onClick={() => navigate('/pricing')} className="nav-link cursor-pointer flex items-center px-3 py-2 rounded-full font-semibold text-gray-800 hover:bg-blue-100 hover:text-blue-500 transition">
               <CheckSquare size={18} className="mr-1 text-blue-500" /> Pricing
             </a>
-            <a onClick={() => navigate('/contact')} className="nav-link flex items-center px-3 py-2 rounded-full font-semibold text-gray-800 hover:bg-blue-100 hover:text-blue-500 transition">
+            <a onClick={() => navigate('/contact')} className="nav-link cursor-pointer flex items-center px-3 py-2 rounded-full font-semibold text-gray-800 hover:bg-blue-100 hover:text-blue-500 transition">
               <Mail size={18} className="mr-1 text-blue-500" /> Contact
             </a>
           </div>
